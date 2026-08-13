@@ -35,14 +35,12 @@
     padding: 32px 16px;
   }
 
-  /* ---------- decorative flourish ---------- */
   .flourish{
     width:70px; height:14px; margin: 10px auto;
     opacity:0.7;
   }
   .flourish svg{ width:100%; height:100%; }
 
-  /* ================= PORTADA ================= */
   .cover{
     width:min(430px, 92vw);
     aspect-ratio: 3/4.3;
@@ -107,7 +105,6 @@
     color: rgba(239,223,185,0.55);
   }
 
-  /* ================= ÍNDICE ================= */
   .book{
     width:min(920px, 96vw);
     background: var(--paper);
@@ -220,7 +217,6 @@
   .day-chip .num{ font-size:16px; font-weight:bold; }
   .day-chip .lock{ font-size:14px; opacity:0.6; }
 
-  /* ================= CAPÍTULO ================= */
   .chapter-eyebrow{
     font-family:'Special Elite', monospace;
     font-size: 12px;
@@ -298,7 +294,6 @@
   .nav-btn:hover{ background: var(--wine); color: var(--paper); }
   .nav-btn:disabled{ opacity:0.35; cursor:default; background:none; color: var(--wine); }
 
-  /* locked view */
   .locked-msg{
     display:flex; flex-direction:column; align-items:flex-start;
     gap: 10px;
@@ -323,6 +318,9 @@
 <script>
 /* ============================================================================
     ////// CONFIG //////
+   IMPORTANTE: todas las rutas de "foto" deben empezar con "fotos/"
+   (SIN "../" delante) porque la carpeta "fotos" está al mismo nivel
+   que este archivo libro.html dentro del repositorio.
    ============================================================================ */
 
 const CONFIG = {
@@ -333,41 +331,37 @@ const CONFIG = {
 
 
 const capitulos = [
-  {dia:1, fecha:"2026-08-12", titulo:"El comienzo", frase:"De todas las historias que pude empezar, elegí quedarme en la tuya desde la primera vez que se nos fueron las horas hablando.", recuerdo:"Aquí va el recuerdo del día 1. Dia uno cuando nos conocimos y estabamos super nerviosos de que pensaria el otro .", foto:"../fotos/dia0.jpg"},
-  {dia:2, fecha:"2026-10-02", titulo:"Una señal", frase:"Hay días que no avisan que serán importantes, y luego resulta que lo cambiaron todo.", recuerdo:"Recuerdo del día 2 no pensamos que nos fueramos acercando tanto como lo hicimos.", foto:"../fotos/dia2.png"},
-  {dia:3, fecha:"2026-10-03", titulo:"Costumbre", frase:"Me acostumbré a buscarte incluso en los lugares donde sé que no estás.", recuerdo:"Recuerdo del día 3 primera vez que se planeo algo tan rapido porque nos moriamos por ver al otro.", foto:"../fotos/segundacita.jpg"},
-  {dia:4, fecha:"2026-10-04", titulo:"Certeza", frase:"No todo en la vida es seguro, pero contigo hasta la duda se siente tranquila.", recuerdo:"Recuerdo del día 4.", foto:"../fotos/dia4.jpg"},
-  {dia:5, fecha:"2026-10-05", titulo:"Detalles", frase:"Te quiero en lo pequeño: en el mensaje de buenos días, en la risa que no se aguanta.", recuerdo:"Recuerdo del día 5.", foto:"../fotos/dia5.jpg"},
-  {dia:6, fecha:"2026-10-06", titulo:"Refugio", frase:"Contigo aprendí que un lugar seguro también puede ser una persona y a no ser juzgado.", recuerdo:"Recuerdo del día 6.", foto:"../fotos/dia6.jpg"},
-  {dia:7, fecha:"2026-10-07", titulo:"Risas", frase:"De todo lo que me diste, lo que más guardo son las ganas de reír que me despiertas.", recuerdo:"Recuerdo del día 7.", foto:"../fotos/dia7.jpg"},
-  {dia:8, fecha:"2026-10-08", titulo:"Distancia", frase:"La distancia solo sirve para darle más valor a las ganas de encontrarnos.", recuerdo:"Recuerdo del día 8.", foto:"../fotos/repacementdia8.jpg"},
-  {dia:9, fecha:"2026-10-09", titulo:"Calma", frase:"Hay una calma específica que solo aparece cuando hablo contigo.", recuerdo:"Recuerdo del día 9.", foto:"../fotos/dia9.jpg"},
-  {dia:10, fecha:"2026-10-10", titulo:"Mitad de camino", frase:"Ya llevamos diez páginas y ninguna se ha sentido repetida.", recuerdo:"Recuerdo del día 10.", foto:"../fotos/dia10.jpg"},
-  {dia:11, fecha:"2026-10-11", titulo:"Constancia", frase:"No busco grandes momentos: busco que sigas ahí en los días normales.", recuerdo:"Recuerdo del día 11.", foto:"../fotos/dia11.jpg"},
-  {dia:12, fecha:"2026-10-12", titulo:"Detalles que quedan", frase:"Guardo tus gestos como quien guarda cosas que no quiere perder.", recuerdo:"Recuerdo del día 12.", foto:"../fotos/dia12.jpg"},
-  {dia:13, fecha:"2026-10-13", titulo:"Sin apuro", frase:"Contigo no tengo prisa: hasta esperar se siente bien cuando sé que eres tú al final.", recuerdo:"Recuerdo del día 13.", foto:"../fotos/dia13.jpg"},
-  {dia:14, fecha:"2026-10-14", titulo:"Complicidad", frase:"Hay silencios que solo funcionan entre nosotros dos.", recuerdo:"Recuerdo del día 14.", foto:"../fotos/dia14.jpg"},
-  {dia:15, fecha:"2026-10-15", titulo:"Punto medio", frase:"Quince días y todavía se me olvida a veces respirar cuando pienso en ti.", recuerdo:"Recuerdo del día 15.", foto:"../fotos/dia15.jpg"},
-  {dia:16, fecha:"2026-10-16", titulo:"El primer hola y abrazo fue un dia como hoy", frase:"Me acostumbré a que tu nombre sea lo primero que busco en el día y lo ultimo en lo que pienso antes de ir a dormir.", recuerdo:"Recuerdo del día 16.", foto:"../fotos/dia16.jpg"},
-  {dia:17, fecha:"2026-10-17", titulo:"Presencia", frase:"No hace falta que estés para sentir que ocupas espacio en mi día.", recuerdo:"Recuerdo del día 17.", foto:"../fotos/dia17.jpg"},
-  {dia:18, fecha:"2026-10-18", titulo:"Simpleza", frase:"Lo nuestro no necesita adornos: se sostiene solo con lo simple.", recuerdo:"Recuerdo del día 18.", foto:"../fotos/dia18.jpg"},
-  {dia:19, fecha:"2026-10-19", titulo:"Aprendizaje", frase:"De ti aprendí que querer bien también se practica.", recuerdo:"Recuerdo del día 19.", foto:"../fotos/dia19.jpg"},
-  {dia:20, fecha:"2026-10-20", titulo:"Veinte páginas", frase:"Wow ya 20 dias asi de rapido vuela el tiempo cuando estamos juntos.", recuerdo:"Recuerdo del día 20.", foto:"../fotos/regalo20.jpg"},
-  {dia:21, fecha:"2026-10-21", titulo:"Textura", frase:"Me gusta cómo se siente pensar en ti sin necesitar ningún motivo.", recuerdo:"Recuerdo del día 21.", foto:"../fotos/regalito.jpg"},
-  {dia:22, fecha:"2026-10-22", titulo:"Incertidumbre", frase:"Tal vez no sepamos como estaran las cosas en el futuro pero quiero seguir creyendo en nosotros.", recuerdo:"Recuerdo del día 22.", foto:"../fotos/beso.jpg"},
-  {dia:23, fecha:"2026-10-23", titulo:"Confianza", frase:"Todas las charlas que tenemos , el hablarnos y estar el uno para el otro ayudandonos en las bajas y altas de cada uno , apoyandonos.", recuerdo:"Recuerdo del día 23.", foto:"fotos/cita25.png"},
-  {dia:24, fecha:"2026-10-24", titulo:"Últimos capítulos", frase:"Se acerca el final del libro, pero no de la historia.", recuerdo:"Recuerdo del día 24.", foto:"fotos/matcha.jpg"},
-  {dia:25, fecha:"2026-10-25", titulo:"Gratitud", frase:"Gracias por hacer ordinarios los días donde solo pensaba en ti.", recuerdo:"Recuerdo del día 25.", foto:"fotos/florcita.jpg"},
-  {dia:26, fecha:"2026-10-26", titulo:"Certeza ", frase:"Entre tantas cosas inciertas, tú te volviste una de las pocas seguras.", recuerdo:"Recuerdo del día 26.", foto:"fotos/gratitud.jpg"},
-  {dia:27, fecha:"2026-10-27", titulo:"Dia 27 del mes fecha importante ", frase:"Ya casi termina octubre, y contigo ninguna página se sintió de más de hecho todo inicio un 27.", recuerdo:"Recuerdo del día 27.", foto:"fotos/dia8.jpg"},
-  {dia:28, fecha:"2026-10-28", titulo:"Tres páginas más", frase:"Quedan pocas páginas, pero contigo nunca es un libro cerrado.", recuerdo:"Recuerdo del día 28.", foto:"fotos/caminando.gif"},
-  {dia:29, fecha:"2026-10-29", titulo:"Penúltima", frase:"Mañana termina sera tu dia especial, pero esto apenas empieza.", recuerdo:"Recuerdo del día 29.", foto:"fotos/regalo21.jpg"},
-  {dia:30, fecha:"2026-10-30", titulo:"Última página", frase:"Se acabó el libro, pero no las ganas de seguir escribiendo contigo Feliz cumpleaños amor ,te amo 💕.", recuerdo:"Quiero tomarme el tiempo para decirte lo mucho que te amo, y lo que disfruto de ti ,realmente yo te digo lo mucho que me gustas , tanto fisica y personalemente, aunque lo que me llamo tanto de tu , fue esa transparencia esa facilidad de palabra que tengo condigo para estar hablando diversos temas , todos los dias, como los dias se nos van volando cuandos nos vemos , cuando nos llamamos , realmente fuimos entrando cada vez en la vida del otro ,conociendo a familiares , amigos . Nos tratamos como novios incluso antes de serlos manteniendo la excluisividad el respeto y la idea al futuro juntos parece cada vez tomar mas sentido . esta va a ser la primera temporada juntos pasando diversas celebraciones , mi cumpleaños el tuyo , fiestas navideñas , pero esto es solo el inicio , Y recuerda siempre amor te amo , te voy a apoyar siempre , recuerda que tienes una persona que te ama y puedes contar con ella siempre en lo que sea.", foto:"fotos/diafinal.jpg"},
+  {dia:1, fecha:"2026-06-12", titulo:"El comienzo", frase:"De todas las historias que pude empezar, elegí quedarme en la tuya desde la primera vez que se nos fueron las horas hablando.", recuerdo:"Aquí va el recuerdo del día 1. Dia uno cuando nos conocimos y estabamos super nerviosos de que pensaria el otro .", foto:"fotos/dia0.png"},
+  {dia:2, fecha:"2026-06-02", titulo:"Una señal", frase:"Hay días que no avisan que serán importantes, y luego resulta que lo cambiaron todo.", recuerdo:"Recuerdo del día 2 no pensamos que nos fueramos acercando tanto como lo hicimos.", foto:"fotos/dia2.png"},
+  {dia:3, fecha:"2026-06-03", titulo:"Costumbre", frase:"Me acostumbré a buscarte incluso en los lugares donde sé que no estás.", recuerdo:"Recuerdo del día 3 primera vez que se planeo algo tan rapido porque nos moriamos por ver al otro.", foto:"fotos/segundacita.jpg"},
+  {dia:4, fecha:"2026-06-04", titulo:"Certeza", frase:"No todo en la vida es seguro, pero contigo hasta la duda se siente tranquila.", recuerdo:"Recuerdo del día 4.", foto:"fotos/dia4.jpg"},
+  {dia:5, fecha:"2026-06-05", titulo:"Detalles", frase:"Te quiero en lo pequeño: en el mensaje de buenos días, en la risa que no se aguanta.", recuerdo:"Recuerdo del día 5.", foto:"fotos/dia5.jpg"},
+  {dia:6, fecha:"2026-06-06", titulo:"Refugio", frase:"Contigo aprendí que un lugar seguro también puede ser una persona y a no ser juzgado.", recuerdo:"Recuerdo del día 6.", foto:"fotos/dia6.jpg"},
+  {dia:7, fecha:"2026-06-07", titulo:"Risas", frase:"De todo lo que me diste, lo que más guardo son las ganas de reír que me despiertas.", recuerdo:"Recuerdo del día 7.", foto:"fotos/dia7.jpg"},
+  {dia:8, fecha:"2026-06-08", titulo:"Distancia", frase:"La distancia solo sirve para darle más valor a las ganas de encontrarnos.", recuerdo:"Recuerdo del día 8.", foto:"fotos/repacementdia8.jpg"},
+  {dia:9, fecha:"2026-06-09", titulo:"Calma", frase:"Hay una calma específica que solo aparece cuando hablo contigo.", recuerdo:"Recuerdo del día 9.", foto:"fotos/dia9.jpg"},
+  {dia:10, fecha:"2026-06-10", titulo:"Mitad de camino", frase:"Ya llevamos diez páginas y ninguna se ha sentido repetida.", recuerdo:"Recuerdo del día 10.", foto:"fotos/dia10.jpg"},
+  {dia:11, fecha:"2026-06-11", titulo:"Constancia", frase:"No busco grandes momentos: busco que sigas ahí en los días normales.", recuerdo:"Recuerdo del día 11.", foto:"fotos/dia11.jpg"},
+  {dia:12, fecha:"2026-06-12", titulo:"Detalles que quedan", frase:"Guardo tus gestos como quien guarda cosas que no quiere perder.", recuerdo:"Recuerdo del día 12.", foto:"fotos/dia12.jpg"},
+  {dia:13, fecha:"2026-06-13", titulo:"Sin apuro", frase:"Contigo no tengo prisa: hasta esperar se siente bien cuando sé que eres tú al final.", recuerdo:"Recuerdo del día 13.", foto:"fotos/dia13.jpg"},
+  {dia:14, fecha:"2026-06-14", titulo:"Complicidad", frase:"Hay silencios que solo funcionan entre nosotros dos.", recuerdo:"Recuerdo del día 14.", foto:"fotos/dia14.jpg"},
+  {dia:15, fecha:"2026-06-15", titulo:"Punto medio", frase:"Quince días y todavía se me olvida a veces respirar cuando pienso en ti.", recuerdo:"Recuerdo del día 15.", foto:"fotos/dia15.jpg"},
+  {dia:16, fecha:"2026-06-16", titulo:"El primer hola y abrazo fue un dia como hoy", frase:"Me acostumbré a que tu nombre sea lo primero que busco en el día y lo ultimo en lo que pienso antes de ir a dormir.", recuerdo:"Recuerdo del día 16.", foto:"fotos/dia16.jpg"},
+  {dia:17, fecha:"2026-06-17", titulo:"Presencia", frase:"No hace falta que estés para sentir que ocupas espacio en mi día.", recuerdo:"Recuerdo del día 17.", foto:"fotos/dia17.jpg"},
+  {dia:18, fecha:"2026-06-18", titulo:"Simpleza", frase:"Lo nuestro no necesita adornos: se sostiene solo con lo simple.", recuerdo:"Recuerdo del día 18.", foto:"fotos/dia18.jpg"},
+  {dia:19, fecha:"2026-06-19", titulo:"Aprendizaje", frase:"De ti aprendí que querer bien también se practica.", recuerdo:"Recuerdo del día 19.", foto:"fotos/dia19.jpg"},
+  {dia:20, fecha:"2026-06-20", titulo:"Veinte páginas", frase:"Wow ya 20 dias asi de rapido vuela el tiempo cuando estamos juntos.", recuerdo:"Recuerdo del día 20.", foto:"fotos/regalo20.jpg"},
+  {dia:21, fecha:"2026-06-21", titulo:"Textura", frase:"Me gusta cómo se siente pensar en ti sin necesitar ningún motivo.", recuerdo:"Recuerdo del día 21.", foto:"fotos/regalito.jpg"},
+  {dia:22, fecha:"2026-06-22", titulo:"Incertidumbre", frase:"Tal vez no sepamos como estaran las cosas en el futuro pero quiero seguir creyendo en nosotros.", recuerdo:"Recuerdo del día 22.", foto:"fotos/beso.jpg"},
+  {dia:23, fecha:"2026-06-23", titulo:"Confianza", frase:"Todas las charlas que tenemos , el hablarnos y estar el uno para el otro ayudandonos en las bajas y altas de cada uno , apoyandonos.", recuerdo:"Recuerdo del día 23.", foto:"fotos/cita25.png"},
+  {dia:24, fecha:"2026-06-24", titulo:"Últimos capítulos", frase:"Se acerca el final del libro, pero no de la historia.", recuerdo:"Recuerdo del día 24.", foto:"fotos/matcha.jpg"},
+  {dia:25, fecha:"2026-06-25", titulo:"Gratitud", frase:"Gracias por hacer ordinarios los días donde solo pensaba en ti.", recuerdo:"Recuerdo del día 25.", foto:"fotos/florcita.jpg"},
+  {dia:26, fecha:"2026-06-26", titulo:"Certeza ", frase:"Entre tantas cosas inciertas, tú te volviste una de las pocas seguras.", recuerdo:"Recuerdo del día 26.", foto:"fotos/gratitud.jpg"},
+  {dia:27, fecha:"2026-06-27", titulo:"Dia 27 del mes fecha importante ", frase:"Ya casi termina octubre, y contigo ninguna página se sintió de más de hecho todo inicio un 27.", recuerdo:"Recuerdo del día 27.", foto:"fotos/dia8.jpg"},
+  {dia:28, fecha:"2026-06-28", titulo:"Tres páginas más", frase:"Quedan pocas páginas, pero contigo nunca es un libro cerrado.", recuerdo:"Recuerdo del día 28.", foto:"fotos/caminando.gif"},
+  {dia:29, fecha:"2026-06-29", titulo:"Penúltima", frase:"Mañana termina sera tu dia especial, pero esto apenas empieza.", recuerdo:"Recuerdo del día 29.", foto:"fotos/regalo21.jpg"},
+  {dia:30, fecha:"2026-06-30", titulo:"Última página", frase:"Se acabó el libro, pero no las ganas de seguir escribiendo contigo Feliz cumpleaños amor ,te amo 💕.", recuerdo:"Quiero tomarme el tiempo para decirte lo mucho que te amo, y lo que disfruto de ti ,realmente yo te digo lo mucho que me gustas , tanto fisica y personalemente, aunque lo que me llamo tanto de tu , fue esa transparencia esa facilidad de palabra que tengo condigo para estar hablando diversos temas , todos los dias, como los dias se nos van volando cuandos nos vemos , cuando nos llamamos , realmente fuimos entrando cada vez en la vida del otro ,conociendo a familiares , amigos . Nos tratamos como novios incluso antes de serlos manteniendo la excluisividad el respeto y la idea al futuro juntos parece cada vez tomar mas sentido . esta va a ser la primera temporada juntos pasando diversas celebraciones , mi cumpleaños el tuyo , fiestas navideñas , pero esto es solo el inicio , Y recuerda siempre amor te amo , te voy a apoyar siempre , recuerda que tienes una persona que te ama y puedes contar con ella siempre en lo que sea.", foto:"fotos/diafinal.jpg"},
 ];
-
-/* ============================================================================
-   No toques Wee lo dañas :v
-   ============================================================================ */
 
 function getToday(){
   const params = new URLSearchParams(window.location.search);
